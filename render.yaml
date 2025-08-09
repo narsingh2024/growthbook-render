@@ -7,7 +7,7 @@ services:
     plan: free
     envVars:
       - key: MONGODB_URI
-        value: mongodb+srv://gorwthbook:gorwthbook@cluster0.sxumkcj.mongodb.net/growthbook?retryWrites=true&w=majority&authSource=admin
+        value: mongodb+srv://${DB_ROOT_USER}:${DB_ROOT_PASSWORD}@cluster0.sxumkcj.mongodb.net/growthbook?retryWrites=true&w=majority&authSource=admin
       - key: NODE_ENV
         value: production
       - key: JWT_SECRET
