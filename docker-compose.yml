@@ -16,6 +16,10 @@ services:
       - mongo
     environment:
       - MONGODB_URI=mongodb+srv://${DB_ROOT_USER}:${DB_ROOT_PASSWORD}@cluster0.sxumkcj.mongodb.net/growthbook?retryWrites=true&w=majority&authSource=admin
+      - NODE_ENV=production
+      - APP_ORIGIN=${APP_URL}  # Set this to your Render URL
+      - API_HOST=${API_HOST}   # Should match APP_ORIGIN with :3100
+      - MONGODB_URI=${MONGODB_URI}
     volumes:
       - uploads:/usr/local/src/app/packages/back-end/uploads
 volumes:
