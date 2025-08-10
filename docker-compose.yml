@@ -11,10 +11,10 @@ services:
     image: "growthbook/growthbook:latest"
     ports:
       - "3000:3000"
-      - "3100:3100"
     depends_on:
       - mongo
     environment:
+      - PORT=3000  # Force backend to use this port
       - MONGODB_URI=mongodb+srv://${DB_ROOT_USER}:${DB_ROOT_PASSWORD}@cluster0.sxumkcj.mongodb.net/growthbook?retryWrites=true&w=majority&authSource=admin
       - NODE_ENV=production
       - APP_ORIGIN=${APP_URL}  # Set this to your Render URL

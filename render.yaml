@@ -6,6 +6,8 @@ services:
     env: docker
     plan: free
     envVars:
+      - key: PORT
+        value: "3000"  # Must match docker-compose
       - key: MONGODB_URI
         value: mongodb+srv://${DB_ROOT_USER}:${DB_ROOT_PASSWORD}@cluster0.sxumkcj.mongodb.net/growthbook?retryWrites=true&w=majority&authSource=admin
       - key: NODE_ENV
