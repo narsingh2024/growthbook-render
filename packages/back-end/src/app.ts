@@ -126,6 +126,12 @@ if (!process.env.NO_INIT && process.env.NODE_ENV !== "test") {
 }
 
 app.set("port", process.env.PORT || 3100);
+app.use(
+  cors({
+    origin: "https://growthbook-render.onrender.com", // your frontend URL
+    credentials: true,
+  })
+);
 app.set("trust proxy", EXPRESS_TRUST_PROXY_OPTS);
 
 // Pretty print on dev

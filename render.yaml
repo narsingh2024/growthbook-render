@@ -2,14 +2,17 @@ services:
   - type: web
     name: growthbook
     runtime: docker
-    dockerCommand: docker compose up web
-    env: docker
     plan: free
+    env: docker
     envVars:
       - key: PORT
-        value: "3000"  # Must match docker-compose
+        value: "3000"
+      - key: DB_ROOT_USER
+        value: gorwthbook
+      - key: DB_ROOT_PASSWORD
+        value: gorwthbook
       - key: MONGODB_URI
-        value: mongodb+srv://${DB_ROOT_USER}:${DB_ROOT_PASSWORD}@cluster0.sxumkcj.mongodb.net/growthbook?retryWrites=true&w=majority&authSource=admin
+        value: mongodb+srv://gorwthbook:gorwthbook@cluster0.sxumkcj.mongodb.net/growthbook?retryWrites=true&w=majority&authSource=admin
       - key: NODE_ENV
         value: production
       - key: JWT_SECRET
@@ -17,10 +20,34 @@ services:
       - key: APP_ORIGIN
         value: https://growthbook-render.onrender.com
       - key: API_HOST
-        value: https://growthbook-render.onrender.com:3100
+        value: https://growthbook-render.onrender.com
       - key: ENCRYPTION_KEY
         generateValue: true
     healthCheckPath: /healthcheck
+
+# services:
+#   - type: web
+#     name: growthbook
+#     runtime: docker
+#     dockerCommand: docker compose up web
+#     env: docker
+#     plan: free
+#     envVars:
+#       - key: PORT
+#         value: "3000"  # Must match docker-compose
+#       - key: MONGODB_URI
+#         value: mongodb+srv://${DB_ROOT_USER}:${DB_ROOT_PASSWORD}@cluster0.sxumkcj.mongodb.net/growthbook?retryWrites=true&w=majority&authSource=admin
+#       - key: NODE_ENV
+#         value: production
+#       - key: JWT_SECRET
+#         generateValue: true
+#       - key: APP_ORIGIN
+#         value: https://growthbook-render.onrender.com
+#       - key: API_HOST
+#         value: https://growthbook-render.onrender.com
+#       - key: ENCRYPTION_KEY
+#         generateValue: true
+#     healthCheckPath: /healthcheck
 
 
  
